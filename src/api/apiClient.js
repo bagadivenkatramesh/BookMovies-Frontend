@@ -20,9 +20,16 @@ export const apiClient = axios.create({
 
 apiClient.interceptors.request.use((config) => {
   const token = readStoredToken()
-  if (token) {
+  const url = String(config.url || '')
+
+  const isCredentialRequest =
+    url.includes('/api/auth/login') ||
+    url.includes('/api/auth/register')
+
+  if (token && !isCredentialRequest) {
     config.headers.Authorization = `Bearer ${token}`
   }
+
   return config
 })
 
