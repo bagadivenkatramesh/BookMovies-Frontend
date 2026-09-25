@@ -593,14 +593,19 @@ p {
 
 .show-list {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
 }
 
 .show-card {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
-  align-items: center;
+  padding: 18px;
+}
+
+.show-card .btn {
+  align-self: flex-start;
 }
 
 .seat-layout {
