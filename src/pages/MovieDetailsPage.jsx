@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
-import { findMovieById } from '../api/movieApi'
+import { getMovieById } from '../api/movieApi'
 import { getShowsByMovie } from '../api/showApi'
 import MoviePoster from '../components/movies/MoviePoster'
 import ShowList from '../components/shows/ShowList'
@@ -26,7 +26,7 @@ export default function MovieDetailsPage() {
       setLoading(true)
       setError('')
       try {
-        const resolved = await findMovieById(movieId)
+        const resolved = await getMovieById(movieId)
         if (!cancelled) {
           setMovie(resolved)
         }
@@ -103,7 +103,7 @@ export default function MovieDetailsPage() {
                 <h2>Choose a screening</h2>
               </div>
             </div>
-            <ShowList shows={shows} movieName={movie.name} />
+            <ShowList shows={shows} movieName={movie.name} viewBy="movie"/>
           </>
         ) : null}
       </PageState>

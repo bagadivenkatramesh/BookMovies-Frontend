@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { formatDateTime, formatPrice } from '../../utils/formatters'
 import EmptyState from '../common/EmptyState'
 
-export default function ShowList({ shows, movieName }) {
+export default function ShowList({ shows, movieName, viewBy }) {
   if (!shows?.length) {
     return (
       <EmptyState
@@ -17,14 +17,20 @@ export default function ShowList({ shows, movieName }) {
       {shows.map((show) => (
         <article key={show.id} className="show-card">
           <div>
-            <h3>{show.theaterOrMovieName || 'Theater Name/Movie NameTBA'}</h3>
+            <h3>{viewBy === 'theater'
+              ? show.movieName || 'Movie Name TBA'
+              : show.theaterName || 'Theater Name TBA'}</h3>
             <div className="show-details">
               <p className="location-language">
-                {show.theaterLocationOrMovieLanguage || 'Theater Location/Movie Language TBA'}
+                {viewBy === 'theater'
+                  ? show.movieLanguage || 'Movie Language TBA'
+                  : show.theaterLocation || 'Theater Location TBA'}
               </p>
 
               <p className="screen-genre">
-                {show.theaterScreenTypeOrMovieGenre || 'Theater Screen Type/Movie Genre TBA'}
+                {viewBy === 'theater'
+                  ? show.movieGenre || 'Movie Genre TBA'
+                  : show.theaterScreenType || 'Screen Type TBA'}
               </p>
             </div>
             <div className="chip-row">

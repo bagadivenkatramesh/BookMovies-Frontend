@@ -132,17 +132,17 @@ export default function SeatSelectionPage() {
           <div className="booking-layout">
             <section className="panel padded">
               <p className="kicker">Seat map</p>
-              <h1 className="page-title">{movie.name || 'Select seats'}</h1>
+              <h1 className="page-title">{show.movieName || 'Select seats'}</h1>
               <p className="muted">
-                {theater.name || 'Theater'} · {theater.location || 'Location TBA'} · {formatDateTime(show.time)}
+                {show.theaterName || 'Theater'} · {show.theaterLocation || 'Location TBA'} · {formatDateTime(show.time)}
               </p>
               <p className="dim">
-                Layout is generated from seat capacity ({theater.seatCapacity || 0}). Booked seats come from
+                Layout is generated from seat capacity ({show.theaterSeatCapacity || 0}). Booked seats come from
                 non-cancelled bookings for this show.
               </p>
               <div className="mt-lg">
                 <SeatMap
-                  seatCapacity={theater.seatCapacity}
+                  seatCapacity={show.theaterSeatCapacity}
                   occupiedSeats={occupied}
                   selectedSeats={selectedSeats}
                   onToggleSeat={toggleSeat}
@@ -155,15 +155,15 @@ export default function SeatSelectionPage() {
               <div className="summary-list">
                 <div className="summary-row">
                   <span>Movie</span>
-                  <strong>{movie.name || '—'}</strong>
+                  <strong>{show.movieName || '—'}</strong>
                 </div>
                 <div className="summary-row">
                   <span>Theater</span>
-                  <strong>{theater.name || '—'}</strong>
+                  <strong>{show.theaterName || '—'}</strong>
                 </div>
                 <div className="summary-row">
                   <span>Screen</span>
-                  <strong>{theater.screenType || '—'}</strong>
+                  <strong>{show.theaterScreenType || '—'}</strong>
                 </div>
                 <div className="summary-row">
                   <span>Show time</span>
@@ -194,8 +194,8 @@ export default function SeatSelectionPage() {
               <Button onClick={handleBooking} disabled={submitting || !selectedSeats.length}>
                 {submitting ? 'Creating booking…' : isAuthenticated ? 'Create booking' : 'Sign in to book'}
               </Button>
-              {movie.id ? (
-                <Link className="btn-ghost" to={`/movies/${movie.id}`} state={{ movie }}>
+              {show.movieId ? (
+                <Link className="btn-ghost" to={`/movies/${show.movieId}`} state={{ movie }}>
                   Back to movie
                 </Link>
               ) : null}

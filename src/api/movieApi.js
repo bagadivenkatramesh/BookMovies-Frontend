@@ -36,11 +36,7 @@ export async function deleteMovie(id) {
   return data
 }
 
-/**
- * The backend does not expose GET /api/movie/{id}.
- * Movie details are resolved from the full movie list.
- */
-export async function findMovieById(movieId) {
-  const movies = await getAllMovies()
-  return movies.find((movie) => Number(movie.id) === Number(movieId)) || null
+export async function getMovieById(movieId) {
+  const { data } = await apiClient.get(`/api/movie/get_movie_by_id/${movieId}`)
+  return data
 }

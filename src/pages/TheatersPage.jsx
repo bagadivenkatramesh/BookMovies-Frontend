@@ -136,7 +136,7 @@ export default function TheatersPage() {
             </Link>
           </div>
           <PageState loading={showsLoading} error={showError}>
-            <ShowList shows={shows} />
+            <ShowList shows={shows} viewBy="theater"/>
           </PageState>
         </section>
       ) : null}
