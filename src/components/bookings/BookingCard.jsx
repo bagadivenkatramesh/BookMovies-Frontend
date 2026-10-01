@@ -28,15 +28,15 @@ export default function BookingCard({
         <span className={`chip ${STATUS_CLASS[status] || 'info'}`}>{status}</span>
         <span className="chip">{formatPrice(booking.price)}</span>
       </div>
-      <h3>{movie.name || 'Movie'}</h3>
+      <h3>{booking.movieName || 'Movie'}</h3>
       <p className="meta">
-        {theater.name || 'Theater'} · {theater.location || 'Location TBA'}
-        {theater.screenType ? ` · ${theater.screenType}` : ''}
+        {booking.theaterName || 'Theater'} · {booking.theaterLocation || 'Location TBA'}
+        {booking.theaterScreenType ? ` · ${booking.theaterScreenType}` : ''}
       </p>
       <div className="summary-list mt-lg">
         <div className="summary-row">
           <span>Show</span>
-          <strong>{formatDateTime(show.time)}</strong>
+          <strong>{formatDateTime(booking.showTime)}</strong>
         </div>
         <div className="summary-row">
           <span>Seats</span>
@@ -58,8 +58,8 @@ export default function BookingCard({
         ) : null}
       </div>
       <div className="btn-row mt-lg">
-        {movie.id ? (
-          <Link className="btn-secondary" to={`/movies/${movie.id}`} state={{ movie }}>
+        {booking.movieId ? (
+          <Link className="btn-secondary" to={`/movies/${booking.movieId}`} state={{ movie }}>
             Movie details
           </Link>
         ) : null}

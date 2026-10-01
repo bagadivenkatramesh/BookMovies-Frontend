@@ -41,6 +41,7 @@ export default function SeatSelectionPage() {
           return
         }
         const bookings = await getBookingsForShow(resolved.id)
+        console.log('bookings', bookings)
         if (!cancelled) {
           setShow(resolved)
           setOccupied(occupiedSeatSet(bookings))
@@ -135,10 +136,6 @@ export default function SeatSelectionPage() {
               <h1 className="page-title">{show.movieName || 'Select seats'}</h1>
               <p className="muted">
                 {show.theaterName || 'Theater'} · {show.theaterLocation || 'Location TBA'} · {formatDateTime(show.time)}
-              </p>
-              <p className="dim">
-                Layout is generated from seat capacity ({show.theaterSeatCapacity || 0}). Booked seats come from
-                non-cancelled bookings for this show.
               </p>
               <div className="mt-lg">
                 <SeatMap
