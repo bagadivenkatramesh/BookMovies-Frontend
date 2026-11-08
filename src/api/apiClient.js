@@ -24,7 +24,7 @@ apiClient.interceptors.request.use((config) => {
 
   const isCredentialRequest =
     url.includes('/api/auth/login') ||
-    url.includes('/api/auth/register')
+    url.includes('/api/auth/register_normal_user')
 
   if (token && !isCredentialRequest) {
     config.headers.Authorization = `Bearer ${token}`
