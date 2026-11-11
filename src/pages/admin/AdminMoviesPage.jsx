@@ -240,8 +240,8 @@ export default function AdminMoviesPage() {
           <input
             id="movie-poster"
             className="input"
-            type="url"
-            placeholder="https://example.com/movie-poster.jpg"
+            type="text"
+            placeholder=""
             value={form.posterUrl}
             onChange={(e) => setForm({ ...form, posterUrl: e.target.value })}
           />
