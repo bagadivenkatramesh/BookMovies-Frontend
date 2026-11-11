@@ -13,6 +13,7 @@ const EMPTY_FORM = {
   language: '',
   releaseDate: '',
   duration: '',
+  posterUrl: '',
 }
 
 export default function AdminMoviesPage() {
@@ -72,8 +73,12 @@ export default function AdminMoviesPage() {
     if (!form.genre.trim()) next.genre = 'Genre is required.'
     if (!form.language.trim()) next.language = 'Language is required.'
     if (!form.releaseDate) next.releaseDate = 'Release date is required.'
+
     const duration = Number(form.duration)
-    if (!Number.isFinite(duration) || duration <= 0) next.duration = 'Duration must be a positive number of minutes.'
+    if (!Number.isFinite(duration) || duration <= 0) {
+      next.duration = 'Duration must be a positive number of minutes.'
+    }
+
     setFieldErrors(next)
     return Object.keys(next).length === 0
   }
@@ -86,6 +91,7 @@ export default function AdminMoviesPage() {
       language: form.language.trim(),
       releaseDate: form.releaseDate,
       duration: Number(form.duration),
+      posterUrl: form.posterUrl.trim(),
     }
   }
 
@@ -93,7 +99,9 @@ export default function AdminMoviesPage() {
     event.preventDefault()
     setFormError('')
     setSuccess('')
+
     if (!validate()) return
+
     setSaving(true)
     try {
       if (editingId) {
@@ -103,8 +111,10 @@ export default function AdminMoviesPage() {
         await addMovie(payload())
         setSuccess('Movie added.')
       }
+
       setForm(EMPTY_FORM)
       setEditingId(null)
+      setFieldErrors({})
       await load()
     } catch (err) {
       setFormError(err.displayMessage || extractErrorMessage(err))
@@ -122,20 +132,26 @@ export default function AdminMoviesPage() {
       language: movie.language || '',
       releaseDate: movie.releaseDate || '',
       duration: movie.duration ?? '',
+      posterUrl: movie.posterUrl || '',
     })
+
+    setFieldErrors({})
     setSuccess('')
     setFormError('')
   }
 
   async function handleDelete(movie) {
     if (!window.confirm(`Delete “${movie.name}”?`)) return
+
     setFormError('')
     try {
       await deleteMovie(movie.id)
+
       if (editingId === movie.id) {
         setEditingId(null)
         setForm(EMPTY_FORM)
       }
+
       await load()
     } catch (err) {
       setFormError(err.displayMessage || extractErrorMessage(err))
@@ -146,50 +162,118 @@ export default function AdminMoviesPage() {
     <div>
       <p className="kicker">Admin</p>
       <h1 className="page-title">Movies</h1>
+
       <Alert type="error">{formError}</Alert>
       <Alert type="success">{success}</Alert>
 
       <form className="panel padded form-grid mt-lg" onSubmit={handleSubmit}>
         <div className="field">
           <label htmlFor="movie-name">Name</label>
-          <input id="movie-name" className="input" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-          {fieldErrors.name ? <span className="field-error">{fieldErrors.name}</span> : null}
+          <input
+            id="movie-name"
+            className="input"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+          />
+          {fieldErrors.name ? (
+            <span className="field-error">{fieldErrors.name}</span>
+          ) : null}
         </div>
+
         <div className="field">
           <label htmlFor="movie-genre">Genre</label>
-          <input id="movie-genre" className="input" value={form.genre} onChange={(e) => setForm({ ...form, genre: e.target.value })} />
-          {fieldErrors.genre ? <span className="field-error">{fieldErrors.genre}</span> : null}
+          <input
+            id="movie-genre"
+            className="input"
+            value={form.genre}
+            onChange={(e) => setForm({ ...form, genre: e.target.value })}
+          />
+          {fieldErrors.genre ? (
+            <span className="field-error">{fieldErrors.genre}</span>
+          ) : null}
         </div>
+
         <div className="field">
           <label htmlFor="movie-language">Language</label>
-          <input id="movie-language" className="input" value={form.language} onChange={(e) => setForm({ ...form, language: e.target.value })} />
-          {fieldErrors.language ? <span className="field-error">{fieldErrors.language}</span> : null}
+          <input
+            id="movie-language"
+            className="input"
+            value={form.language}
+            onChange={(e) => setForm({ ...form, language: e.target.value })}
+          />
+          {fieldErrors.language ? (
+            <span className="field-error">{fieldErrors.language}</span>
+          ) : null}
         </div>
+
         <div className="field">
           <label htmlFor="movie-date">Release date</label>
-          <input id="movie-date" className="input" type="date" value={form.releaseDate} onChange={(e) => setForm({ ...form, releaseDate: e.target.value })} />
-          {fieldErrors.releaseDate ? <span className="field-error">{fieldErrors.releaseDate}</span> : null}
+          <input
+            id="movie-date"
+            className="input"
+            type="date"
+            value={form.releaseDate}
+            onChange={(e) => setForm({ ...form, releaseDate: e.target.value })}
+          />
+          {fieldErrors.releaseDate ? (
+            <span className="field-error">{fieldErrors.releaseDate}</span>
+          ) : null}
         </div>
+
         <div className="field">
           <label htmlFor="movie-duration">Duration (minutes)</label>
-          <input id="movie-duration" className="input" type="number" min="1" value={form.duration} onChange={(e) => setForm({ ...form, duration: e.target.value })} />
-          {fieldErrors.duration ? <span className="field-error">{fieldErrors.duration}</span> : null}
+          <input
+            id="movie-duration"
+            className="input"
+            type="number"
+            min="1"
+            value={form.duration}
+            onChange={(e) => setForm({ ...form, duration: e.target.value })}
+          />
+          {fieldErrors.duration ? (
+            <span className="field-error">{fieldErrors.duration}</span>
+          ) : null}
         </div>
+
+        <div className="field full">
+          <label htmlFor="movie-poster">Movie Poster URL</label>
+          <input
+            id="movie-poster"
+            className="input"
+            type="url"
+            placeholder="https://example.com/movie-poster.jpg"
+            value={form.posterUrl}
+            onChange={(e) => setForm({ ...form, posterUrl: e.target.value })}
+          />
+        </div>
+
         <div className="field full">
           <label htmlFor="movie-description">Description</label>
-          <textarea id="movie-description" className="textarea" rows="3" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
-          {fieldErrors.description ? <span className="field-error">{fieldErrors.description}</span> : null}
+          <textarea
+            id="movie-description"
+            className="textarea"
+            rows="3"
+            value={form.description}
+            onChange={(e) => setForm({ ...form, description: e.target.value })}
+          />
+          {fieldErrors.description ? (
+            <span className="field-error">{fieldErrors.description}</span>
+          ) : null}
         </div>
+
         <div className="btn-row full">
           <Button type="submit" disabled={saving}>
             {saving ? 'Saving…' : editingId ? 'Update movie' : 'Add movie'}
           </Button>
+
           {editingId ? (
             <Button
               variant="secondary"
               onClick={() => {
                 setEditingId(null)
                 setForm(EMPTY_FORM)
+                setFieldErrors({})
+                setFormError('')
               }}
             >
               Cancel edit
@@ -199,7 +283,13 @@ export default function AdminMoviesPage() {
       </form>
 
       <div className="mt-lg">
-        <PageState loading={loading} error={error} onRetry={load} empty={!movies.length} emptyTitle="No movies yet">
+        <PageState
+          loading={loading}
+          error={error}
+          onRetry={load}
+          empty={!movies.length}
+          emptyTitle="No movies yet"
+        >
           <div className="table-wrap panel">
             <table>
               <thead>
@@ -211,6 +301,7 @@ export default function AdminMoviesPage() {
                   <th />
                 </tr>
               </thead>
+
               <tbody>
                 {movies.map((movie) => (
                   <tr key={movie.id}>
@@ -220,10 +311,17 @@ export default function AdminMoviesPage() {
                     <td>{formatDuration(movie.duration)}</td>
                     <td>
                       <div className="btn-row">
-                        <Button variant="secondary" onClick={() => startEdit(movie)}>
+                        <Button
+                          variant="secondary"
+                          onClick={() => startEdit(movie)}
+                        >
                           Edit
                         </Button>
-                        <Button variant="danger" onClick={() => handleDelete(movie)}>
+
+                        <Button
+                          variant="danger"
+                          onClick={() => handleDelete(movie)}
+                        >
                           Delete
                         </Button>
                       </div>
