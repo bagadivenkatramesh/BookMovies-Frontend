@@ -242,10 +242,10 @@ export default function AdminShowsPage() {
             <tbody>
               {shows.map((show) => (
                 <tr key={show.id}>
-                  <td>{show.movie?.name || '—'}</td>
+                  <td>{show.movie || '—'}</td>
                   <td>
-                    {show.theater?.name || '—'}
-                    <div className="dim">{show.theater?.location}</div>
+                    {show.theater || '—'}
+                    <div className="dim">{show.theaterLocation}</div>
                   </td>
                   <td>{formatDateTime(show.time)}</td>
                   <td>{formatPrice(show.price)}</td>
