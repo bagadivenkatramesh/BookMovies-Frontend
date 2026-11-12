@@ -219,7 +219,7 @@ export default function AdminShowsPage() {
       <form className="filters" onSubmit={loadTheatersByLocation}>
         <div className="field" style={{ gridColumn: '1 / span 3' }}>
           <label htmlFor="show-location">Load theaters by location</label>
-          <input id="show-location" className="input" value={locationQuery} onChange={(e) => setLocationQuery(e.target.value)} placeholder="Needed because there is no get-all-theaters API" />
+          <input id="show-location" className="input" value={locationQuery} onChange={(e) => setLocationQuery(e.target.value)} placeholder="Enter a location to load theaters in the dropdown" />
         </div>
         <div className="field" style={{ justifyContent: 'end' }}>
           <label>&nbsp;</label>
