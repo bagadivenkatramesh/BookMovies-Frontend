@@ -157,7 +157,7 @@ export default function AdminBookingsPage() {
         error={error}
         onRetry={() => (showId.trim() ? loadByShow({ preventDefault() {} }) : loadByStatus())}
         empty={!bookings.length}
-        emptyTitle="No bookings in this view"
+        emptyTitle="No bookings for this show"
       >
         <div className="booking-list">
           {bookings.map((booking) => (
