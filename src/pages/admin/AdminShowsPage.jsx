@@ -180,7 +180,7 @@ export default function AdminShowsPage() {
         </div>
       </form>
 
-      <form className="panel padded form-grid mt-lg" onSubmit={handleSubmit}>
+      <form className="panel padded form-grid" style={{ marginBottom: '24px' }} onSubmit={handleSubmit}>
         <div className="field">
           <label htmlFor="show-movie">Movie</label>
           <select id="show-movie" className="select" value={form.movieId} onChange={(e) => setForm({ ...form, movieId: e.target.value })}>
