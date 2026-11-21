@@ -169,6 +169,17 @@ export default function AdminShowsPage() {
       <Alert type="error">{formError}</Alert>
       <Alert type="success">{success}</Alert>
 
+      <form className="filters" onSubmit={loadTheatersByLocation}>
+        <div className="field" style={{ gridColumn: '1 / span 3' }}>
+          <label htmlFor="show-location">Load theaters by location</label>
+          <input id="show-location" className="input" value={locationQuery} onChange={(e) => setLocationQuery(e.target.value)} placeholder="Enter a location to load theaters in the dropdown" />
+        </div>
+        <div className="field" style={{ justifyContent: 'end' }}>
+          <label>&nbsp;</label>
+          <Button type="submit" variant="secondary">Load theaters</Button>
+        </div>
+      </form>
+
       <form className="panel padded form-grid mt-lg" onSubmit={handleSubmit}>
         <div className="field">
           <label htmlFor="show-movie">Movie</label>
@@ -213,17 +224,6 @@ export default function AdminShowsPage() {
               Cancel edit
             </Button>
           ) : null}
-        </div>
-      </form>
-
-      <form className="filters" onSubmit={loadTheatersByLocation}>
-        <div className="field" style={{ gridColumn: '1 / span 3' }}>
-          <label htmlFor="show-location">Load theaters by location</label>
-          <input id="show-location" className="input" value={locationQuery} onChange={(e) => setLocationQuery(e.target.value)} placeholder="Enter a location to load theaters in the dropdown" />
-        </div>
-        <div className="field" style={{ justifyContent: 'end' }}>
-          <label>&nbsp;</label>
-          <Button type="submit" variant="secondary">Load theaters</Button>
         </div>
       </form>
 
