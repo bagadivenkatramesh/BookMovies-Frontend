@@ -42,7 +42,7 @@ export default function LoginPage() {
       <form className="auth-card stack" onSubmit={handleSubmit}>
         <p className="kicker">Welcome back</p>
         <h1>Sign in to BookMovies</h1>
-        <p className="muted">Use your backend account. Sessions last about one hour.</p>
+        <p className="muted">Sign in with your BookMovies username and password.</p>
         {successMessage ? <Alert type="success">{successMessage}</Alert> : null}
         <Alert type="error">{error}</Alert>
         <div className="field">

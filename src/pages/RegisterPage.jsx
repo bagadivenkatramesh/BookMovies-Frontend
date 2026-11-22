@@ -80,7 +80,7 @@ export default function RegisterPage() {
       <form className="auth-card stack" onSubmit={handleSubmit}>
         <p className="kicker">Join BookMovies</p>
         <h1>Create your account</h1>
-        <p className="muted">Registration uses the normal-user endpoint. You will sign in after this step.</p>
+        <p className="muted">Create an account, then sign in to start booking.</p>
         <Alert type="error">{submitError}</Alert>
         <div className="field">
           <label htmlFor="reg-username">Username</label>

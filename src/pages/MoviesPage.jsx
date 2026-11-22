@@ -84,10 +84,10 @@ export default function MoviesPage() {
     <div className="container">
       <p className="kicker">Discover</p>
       <h1 className="page-title">Movies</h1>
-      <p className="lede">Search by title or filter using the dedicated genre and language APIs.</p>
+      <p className="lede">Search by title or filter using the dedicated genre and language filters.</p>
       <AuthRequired
         title="Sign in to search movies"
-        text="Title, genre, and language filters call authenticated movie endpoints."
+        text="Sign in to search by title, genre, or language and see what’s playing."
       >
         <div className="mt-lg">
           <MovieFilters

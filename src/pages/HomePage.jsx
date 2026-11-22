@@ -54,8 +54,8 @@ export default function HomePage() {
           <p className="kicker">Cinema booking</p>
           <h1>Reserve the seats. Keep the night.</h1>
           <p className="lede">
-            Browse films, compare showtimes, and lock in seats with a layout derived from each theater&apos;s
-            capacity. BookMovies is built for a clean, focused ticket flow.
+              Browse films, compare showtimes, and lock in your seats. BookMovies is built for a
+              clean, focused ticket flow.
           </p>
           <div className="btn-row mt-lg">
             <Link className="btn" to="/movies">
@@ -69,7 +69,6 @@ export default function HomePage() {
         <aside className="hero-panel">
           <p className="kicker">Now on BookMovies</p>
           <h2>Plan the screening, then pick seats.</h2>
-          <p className="muted">Live catalogue numbers come from the backend when it is reachable.</p>
           <div className="stat-row">
             <div className="stat">
               <strong>{authLoading || (isAuthenticated && loading) ? '—' : movies.length}</strong>
@@ -80,8 +79,8 @@ export default function HomePage() {
               <span>Showtimes</span>
             </div>
             <div className="stat">
-              <strong>₹</strong>
-              <span>INR pricing</span>
+              <strong>INR</strong>
+              <span>pricing</span>
             </div>
           </div>
         </aside>
@@ -99,7 +98,7 @@ export default function HomePage() {
 
       <AuthRequired
         title="Sign in to browse the catalogue"
-        text="Movie and show endpoints require a JWT. Create an account or sign in to load titles from the backend."
+        text="Create an account or sign in to see what’s playing and start booking."
       >
         <PageState
           loading={loading || authLoading}

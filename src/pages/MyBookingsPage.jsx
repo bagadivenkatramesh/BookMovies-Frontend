@@ -86,8 +86,8 @@ export default function MyBookingsPage() {
       <p className="kicker">Your tickets</p>
       <h1 className="page-title">My Bookings</h1>
       <p className="lede">
-        Bookings are loaded for the signed-in user. Confirmation is a placeholder action — no payment is
-        processed. Cancellation may be refused within two hours of showtime.
+        Review your tickets here. Confirming a booking does not take payment(will be implemented shortly). You may not be able to cancel
+        within two hours of showtime.
       </p>
       {info ? <div className="mt-lg"><Alert type="success">{info}</Alert></div> : null}
       {actionError ? <div className="mt-lg"><Alert type="error">{actionError}</Alert></div> : null}

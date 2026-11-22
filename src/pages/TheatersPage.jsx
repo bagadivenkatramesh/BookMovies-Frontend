@@ -75,11 +75,10 @@ export default function TheatersPage() {
       <p className="kicker">Venues</p>
       <h1 className="page-title">Find theaters</h1>
       <p className="lede">
-        Theater discovery uses location search. There is no public list-all-theaters endpoint, so enter a city
-        or area to load venues.
+        Search by city or area to see theaters nearby, then pick a venue to view its showtimes.
       </p>
 
-      <AuthRequired title="Sign in to find theaters" text="Theater lookup by location is an authenticated endpoint.">
+      <AuthRequired title="Sign in to find theaters" text="Sign in to search by location and browse theaters and showtimes.">
       <form className="filters mt-lg" onSubmit={search}>
         <div className="field full" style={{ gridColumn: '1 / span 3' }}>
           <label htmlFor="location">Location</label>
