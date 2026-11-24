@@ -125,9 +125,10 @@ Admin UI is shown only when the current user’s roles include `ROLE_ADMIN`. The
 | Shows | Create, update, delete. Movie dropdown from all movies; theaters from shows plus optional location lookup. Delete is refused by the backend if the show already has bookings. |
 | Bookings | Filter by `PENDING`, `CONFIRMED`, or `CANCELLED`, or look up a show ID. Confirm and cancel actions. No list-all-bookings endpoint. |
 
-### Explicitly not implemented
+### Features that are going to be implemented very shortly
 
 - Payment processing
+- Concurrency-safe seat booking
 - Password reset / email verification
 - Admin account creation from this UI (only normal-user registration)
 - Automated tests
@@ -136,7 +137,6 @@ Admin UI is shown only when the current user’s roles include `ROLE_ADMIN`. The
 
 ## 4. Technology stack
 
-Versions below match `package.json`. Resolved versions in `package-lock.json` are noted where they differ.
 
 | Layer | Technology | Version |
 |---|---|---|
