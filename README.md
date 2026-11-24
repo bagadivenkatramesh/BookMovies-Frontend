@@ -491,6 +491,7 @@ These are **not** current features.
 | Area | Why it matters |
 |---|---|
 | Payment provider | Confirmation is a status update only. |
+| Concurrecy-safe seat booking | Guarantees no double-booking of seats under concurrent requests. |
 | HttpOnly cookie or a tighter token store | JWT in `localStorage` is convenient and XSS-sensitive. |
 | Show-by-id and list-all-theaters APIs | Seat page currently scans all shows; theater admin requires a location search. |
 | Backend-defined seat maps | Labels are generated from capacity, not a stored layout. |
@@ -498,8 +499,6 @@ These are **not** current features.
 | Automated tests | No unit or end-to-end suite in this repo. |
 | `.env.example` | Would document `VITE_API_BASE_URL` without copying production values. |
 | Remove leftover debug logging | `SeatSelectionPage` still logs bookings to the console. |
-
-Smaller polish: align empty-state copy on movie details with the existing `get_movie_by_id` endpoint, and add a dedicated show-by-id fetch if the backend exposes one.
 
 ---
 
