@@ -65,16 +65,50 @@ Screenshot files are not committed yet. Add images under `docs/screenshots/` and
 | Admin dashboard | Counts and links into admin pages | `docs/screenshots/08-admin-dashboard.png` |
 | Admin movies | Create/edit form and catalogue table | `docs/screenshots/09-admin-movies.png` |
 
-```md
+
+
+## Application Screenshots
+
+### 1. Home Page
+Explore the application and featured movies.
+
 ![Home](docs/screenshots/01-home.png)
+
+### 2. Movies
+Browse available movies.
+
 ![Movies](docs/screenshots/02-movies.png)
+
+### 3. Movie Details
+View movie information and available shows.
+
 ![Movie details](docs/screenshots/03-movie-details.png)
+
+### 4. Theaters
+Explore theaters and their shows.
+
 ![Theaters](docs/screenshots/04-theaters.png)
+
+### 5. Seat Selection
+Select seats for a show.
+
 ![Seat selection](docs/screenshots/05-seat-selection.png)
+
+### 6. My Bookings
+View booking history and status.
+
 ![My Bookings](docs/screenshots/06-my-bookings.png)
+
+### 7. User Authentication
+Sign up or log in.
+
 ![Sign up page](docs/screenshots/07-auth.png)
+
+### 8. Admin Dashboard
+Manage movies, theaters, and shows.
+
 ![Admin dashboard](docs/screenshots/08-admin-dashboard.png)
-```
+
 
 ---
 
