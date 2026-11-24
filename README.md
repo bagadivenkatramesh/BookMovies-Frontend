@@ -69,8 +69,10 @@ Screenshot files are not committed yet. Add images under `docs/screenshots/` and
 ![Home](docs/screenshots/01-home.png)
 ![Movies](docs/screenshots/02-movies.png)
 ![Movie details](docs/screenshots/03-movie-details.png)
+![Theaters](docs/screenshots/04-theaters.png)
 ![Seat selection](docs/screenshots/05-seat-selection.png)
 ![My Bookings](docs/screenshots/06-my-bookings.png)
+![Sign up page](docs/screenshots/07-auth.png)
 ![Admin dashboard](docs/screenshots/08-admin-dashboard.png)
 ```
 
