@@ -45,7 +45,7 @@ Typical customer flow:
 4. Create a booking (backend status starts as `PENDING`).
 5. Confirm or cancel from **My Bookings**.
 
-There is **no payment gateway**. Confirmation is an API status change, not a paid checkout.
+There is no payment gateway as of now. It will be implemented very shortly. For now, confirmation is an API status change, not a paid checkout.
 
 ---
 
