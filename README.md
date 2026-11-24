@@ -2,7 +2,7 @@
 
 A React client for **BookMovies**, a movie ticket booking application. Users can register, sign in, browse movies and theaters, pick showtimes, select seats, and manage bookings. Administrators can maintain catalogue data and review bookings.
 
-This repository is the **frontend only**. The API is a separately developed Java / Spring Boot service with Spring Security, JWT authentication, and MySQL.
+This repository is the **frontend only**. The API(backend) is a separately developed Java / Spring Boot service with Spring Security, JWT authentication, and MySQL.
 
 **Live Application:** [https://bookmovies-web.vercel.app](https://bookmovies-web.vercel.app)  
 **Backend Repository:** [BookMovies-Backend](https://github.com/bagadivenkatramesh/BookMovies)
