@@ -51,24 +51,6 @@ There is no payment gateway as of now. It will be implemented very shortly. For 
 
 ## 2. Screenshots / application preview
 
-Screenshot files are not committed yet. Add images under `docs/screenshots/` and replace the placeholders below. Suggested captures from a signed-in session (and one admin session):
-
-| Screen | What to capture | Placeholder path |
-|---|---|---|
-| Home | Hero, catalogue grid, sign-in prompt if logged out | `docs/screenshots/01-home.png` |
-| Movies | Title / genre / language filters and movie cards | `docs/screenshots/02-movies.png` |
-| Movie details | Poster, metadata, showtimes | `docs/screenshots/03-movie-details.png` |
-| Theaters | Location search and venue cards | `docs/screenshots/04-theaters.png` |
-| Seat selection | Seat map, occupied vs selected seats, booking summary | `docs/screenshots/05-seat-selection.png` |
-| My Bookings | PENDING / CONFIRMED cards with confirm and cancel | `docs/screenshots/06-my-bookings.png` |
-| Sign in / register | Auth forms | `docs/screenshots/07-auth.png` |
-| Admin dashboard | Counts and links into admin pages | `docs/screenshots/08-admin-dashboard.png` |
-| Admin movies | Create/edit form and catalogue table | `docs/screenshots/09-admin-movies.png` |
-
-
-
-## Application Screenshots
-
 ### 1. Home Page
 Explore the application and featured movies.
 
