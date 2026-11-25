@@ -17,15 +17,14 @@ This repository is the **frontend only**. The API(backend) is a separately devel
 4. [Technology stack](#4-technology-stack)
 5. [AI-assisted development](#5-ai-assisted-development)
 6. [Application architecture](#6-application-architecture)
-7. [Project folder structure](#7-project-folder-structure)
-8. [Authentication and authorization](#8-authentication-and-authorization)
-9. [Backend API integration](#9-backend-api-integration)
-10. [Environment configuration](#10-environment-configuration)
-11. [Local installation and setup](#11-local-installation-and-setup)
-12. [Running the application](#12-running-the-application)
-13. [Production build](#13-production-build)
-14. [Deployment information](#14-deployment-information)
-15. [Future improvements](#15-future-improvements)
+7. [Authentication and authorization](#8-authentication-and-authorization)
+8. [Backend API integration](#9-backend-api-integration)
+9. [Environment configuration](#10-environment-configuration)
+10. [Local installation and setup](#11-local-installation-and-setup)
+11. [Running the application](#12-running-the-application)
+12. [Production build](#13-production-build)
+13. [Deployment information](#14-deployment-information)
+14. [Future improvements](#15-future-improvements)
 
 ---
 
@@ -125,15 +124,6 @@ Admin UI is shown only when the current user’s roles include `ROLE_ADMIN`. The
 | Shows | Create, update, delete. Movie dropdown from all movies; theaters from shows plus optional location lookup. Delete is refused by the backend if the show already has bookings. |
 | Bookings | Filter by `PENDING`, `CONFIRMED`, or `CANCELLED`, or look up a show ID. Confirm and cancel actions. No list-all-bookings endpoint. |
 
-### Features that are going to be implemented very shortly
-
-- Payment processing
-- Concurrency-safe seat booking
-- Password reset / email verification
-- Admin account creation from this UI (only normal-user registration)
-- Automated tests
-- And many others
-
 ---
 
 ## 4. Technology stack
@@ -222,72 +212,7 @@ Seat labels are generated in the browser from `theaterSeatCapacity` (10 seats pe
 
 ---
 
-## 7. Project folder structure
-
-```text
-bookmovies-frontend/
-├── index.html
-├── package.json
-├── vite.config.js
-├── vercel.json
-├── eslint.config.js
-├── public/                 # favicon, static poster assets
-└── src/
-    ├── main.jsx
-    ├── App.jsx
-    ├── index.css
-    ├── api/
-    │   ├── apiClient.js
-    │   ├── authApi.js
-    │   ├── movieApi.js
-    │   ├── theaterApi.js
-    │   ├── showApi.js
-    │   └── bookingApi.js
-    ├── context/
-    │   └── AuthContext.jsx
-    ├── routes/
-    │   ├── AppRoutes.jsx
-    │   ├── ProtectedRoute.jsx
-    │   └── AdminRoute.jsx
-    ├── layouts/
-    │   ├── MainLayout.jsx
-    │   └── AdminLayout.jsx
-    ├── pages/
-    │   ├── HomePage.jsx
-    │   ├── MoviesPage.jsx
-    │   ├── MovieDetailsPage.jsx
-    │   ├── TheatersPage.jsx
-    │   ├── SeatSelectionPage.jsx
-    │   ├── MyBookingsPage.jsx
-    │   ├── LoginPage.jsx
-    │   ├── RegisterPage.jsx
-    │   ├── ForbiddenPage.jsx
-    │   ├── NotFoundPage.jsx
-    │   └── admin/
-    ├── components/
-    │   ├── common/
-    │   ├── layout/
-    │   ├── movies/
-    │   ├── shows/
-    │   ├── seats/
-    │   └── bookings/
-    └── utils/
-```
-
-| Path | Role |
-|---|---|
-| `src/api` | HTTP client and endpoint wrappers |
-| `src/context` | JWT session and `useAuth()` |
-| `src/routes` | Public, authenticated, and admin routing |
-| `src/pages` | Screens; `pages/admin` is the back office |
-| `src/components` | Reusable presentational pieces |
-| `src/utils` | Token key, error messages, dates/prices, seat grid |
-
-`node_modules` and `dist` are build artifacts and are not part of the source layout.
-
----
-
-## 8. Authentication and authorization
+## 7. Authentication and authorization
 
 ### Login and session restore
 
@@ -322,7 +247,7 @@ Frontend checks only hide UI. Admin mutations still depend on Spring Security on
 
 ---
 
-## 9. Backend API integration
+## 8. Backend API integration
 
 Base URL: `import.meta.env.VITE_API_BASE_URL`, falling back to `http://localhost:8080`. Axios timeout is 20 seconds. JSON request bodies. List helpers coerce non-array payloads with `asArray()`.
 
@@ -388,7 +313,7 @@ Production API host used with the Vercel frontend: `https://bookmovies-productio
 
 ---
 
-## 10. Environment configuration
+## 9. Environment configuration
 
 Vite exposes only variables prefixed with `VITE_`. There is no committed `.env` or `.env.example`. `.env` and `.env.*` are gitignored.
 
@@ -416,7 +341,7 @@ Restart `npm run dev` after changing `.env`.
 
 ---
 
-## 11. Local installation and setup
+## 10. Local installation and setup
 
 ### Prerequisites
 
@@ -437,7 +362,7 @@ Create `.env` in the project root as shown in [Environment configuration](#10-en
 
 ---
 
-## 12. Running the application
+## 11. Running the application
 
 ```bash
 npm run dev
@@ -455,7 +380,7 @@ Use a normal-user account for booking, and an admin account created on the backe
 
 ---
 
-## 13. Production build
+## 12. Production build
 
 ```bash
 npm run build
@@ -471,7 +396,7 @@ Set `VITE_API_BASE_URL` to the deployed API **before** `npm run build`; Vite inl
 
 ---
 
-## 14. Deployment information
+## 13. Deployment information
 
 | Component | Platform | URL |
 |---|---|---|
@@ -485,19 +410,28 @@ On Vercel, define `VITE_API_BASE_URL` for the production environment and redeplo
 
 ---
 
-## 15. Future improvements
+## 14. Future improvements
 
-These are **not** current features.
+None of the items below are in the current frontend.
 
-| Area | Why it matters |
+### Planned next
+
+| Area | Notes |
 |---|---|
-| Payment provider | Confirmation is a status update only. |
-| Concurrecy-safe seat booking | Guarantees no double-booking of seats under concurrent requests. |
-| HttpOnly cookie or a tighter token store | JWT in `localStorage` is convenient and XSS-sensitive. |
-| Show-by-id and list-all-theaters APIs | Seat page currently scans all shows; theater admin requires a location search. |
-| Backend-defined seat maps | Labels are generated from capacity, not a stored layout. |
-| Public catalogue without login | Movie and theater APIs are treated as authenticated in this UI. |
-| Automated tests | No unit or end-to-end suite in this repo. |
+| Payment | Booking confirmation is an API status change (`PENDING` → `CONFIRMED`), not a paid checkout. |
+| Concurrency-safe seat booking | Avoid double-booking the same seats when two users book at the same time (this is primarily a backend concern; the UI should then reflect it). |
+| Password reset / email verification | Accounts are created and signed in with username and password only. |
+| Admin registration in this UI | Only normal-user registration is implemented; admin users are created on the backend. |
+| Automated tests | No unit or end-to-end tests in this repository. |
+
+### Later / product gaps
+
+| Area | Notes |
+|---|---|
+| HttpOnly (or similar) token storage | The JWT is stored in `localStorage`, which is simple and XSS-sensitive. |
+| Show-by-id and list-all-theaters APIs | Seat selection currently loads all shows to find one ID; theater admin requires a location search. |
+| Backend-defined seat maps | Seat labels are generated in the browser from theater capacity, not a stored layout. |
+| Public catalogue without login | Home, movies, theaters, and seats do not load API data until the user is signed in. |
 
 ---
 
