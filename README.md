@@ -111,7 +111,7 @@ Catalogue pages (home, movies, movie details, theaters, seats) are reachable wit
 | Theater search | Search by location string; open a venue to list its shows. There is no “list all theaters” API. |
 | Seat selection | Client-generated grid from theater seat capacity; occupied seats come from non-cancelled bookings for that show. |
 | Create booking | Selected seats posted to `POST /api/booking/create_booking`. Backend creates a `PENDING` booking and prices it. |
-| My Bookings | List current user’s bookings; confirm (`PENDING` → confirmed) or cancel. Copy notes that cancel near showtime may be rejected by the backend. |
+| My Bookings | List current user’s bookings; confirm (`PENDING` → `CONFIRMED`) or cancel. Copy notes that cancel near showtime may be rejected by the backend. |
 
 ### Administrator (`ROLE_ADMIN`)
 
@@ -132,6 +132,7 @@ Admin UI is shown only when the current user’s roles include `ROLE_ADMIN`. The
 - Password reset / email verification
 - Admin account creation from this UI (only normal-user registration)
 - Automated tests
+- And many others
 
 ---
 
@@ -497,8 +498,6 @@ These are **not** current features.
 | Backend-defined seat maps | Labels are generated from capacity, not a stored layout. |
 | Public catalogue without login | Movie and theater APIs are treated as authenticated in this UI. |
 | Automated tests | No unit or end-to-end suite in this repo. |
-| `.env.example` | Would document `VITE_API_BASE_URL` without copying production values. |
-| Remove leftover debug logging | `SeatSelectionPage` still logs bookings to the console. |
 
 ---
 

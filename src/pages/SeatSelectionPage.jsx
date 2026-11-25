@@ -41,7 +41,6 @@ export default function SeatSelectionPage() {
           return
         }
         const bookings = await getBookingsForShow(resolved.id)
-        console.log('bookings', bookings)
         if (!cancelled) {
           setShow(resolved)
           setOccupied(occupiedSeatSet(bookings))
